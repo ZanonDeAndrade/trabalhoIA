@@ -1,0 +1,7 @@
+line-length = 140
+target-version = "py312"
+extend-exclude = ["frontend", ".venv", "notebooks"]
+
+[lint]
+select = ["E9", "F", "B"]
+ignore = ["B008", "B905"]

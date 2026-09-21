@@ -4,12 +4,19 @@ __pycache__/
 *$py.class
 *.so
 .Python
+.pytest_cache/
+.ruff_cache/
 
 # Ambientes virtuais
 .venv/
 env/
 venv/
 ENV/
+
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
 
 # Jupyter
 .ipynb_checkpoints/
@@ -18,3 +25,10 @@ ENV/
 # IDE
 .vscode/
 .idea/
+
+# Artefatos temporários do relatório
+reports/.cache_relatorio/
+
+# Front-end
+node_modules/
+frontend/dist/

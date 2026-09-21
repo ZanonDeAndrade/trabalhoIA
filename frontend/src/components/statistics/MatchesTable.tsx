@@ -1,4 +1,5 @@
 import type { MatchesResponse } from '../../types/api'
+import { formatDate, formatNumber } from '../../utils/format'
 import { EmptyState } from '../feedback/EmptyState'
 
 type MatchesTableProps = {
@@ -20,33 +21,36 @@ export function MatchesTable({ data, onPageChange }: MatchesTableProps) {
     <section className="table-section" aria-label="Tabela de partidas">
       <div className="table-wrap">
         <table>
+          <caption className="sr-only">Partidas do recorte selecionado</caption>
           <thead>
             <tr>
-              <th>Data</th>
-              <th>Mandante</th>
-              <th>Placar</th>
-              <th>Visitante</th>
-              <th>Amarelos</th>
-              <th>Vermelhos</th>
-              <th>Estádio</th>
+              <th scope="col">Data</th>
+              <th scope="col">Mandante</th>
+              <th scope="col">Placar</th>
+              <th scope="col">Visitante</th>
+              <th scope="col">Amarelos</th>
+              <th scope="col">Expulsões</th>
+              <th scope="col">Público</th>
+              <th scope="col">Estádio</th>
             </tr>
           </thead>
           <tbody>
             {data.matches.map((match) => (
               <tr key={match.id}>
-                <td>{new Date(`${match.date}T00:00:00`).toLocaleDateString('pt-BR')}</td>
+                <td>{formatDate(match.date)}</td>
                 <td>{match.home_team}</td>
                 <td>{match.score}</td>
                 <td>{match.away_team}</td>
                 <td>{match.yellow_cards}</td>
                 <td>{match.red_cards}</td>
+                <td>{match.attendance === null ? '—' : formatNumber(match.attendance)}</td>
                 <td>{match.stadium}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="pagination" aria-label="Paginação">
+      <nav className="pagination" aria-label="Paginação">
         <button
           className="button secondary"
           type="button"
@@ -56,7 +60,7 @@ export function MatchesTable({ data, onPageChange }: MatchesTableProps) {
           Anterior
         </button>
         <span>
-          Página {data.page} de {data.pages}
+          Página {data.page} de {data.pages} · {formatNumber(data.total)} partidas
         </span>
         <button
           className="button secondary"
@@ -66,7 +70,7 @@ export function MatchesTable({ data, onPageChange }: MatchesTableProps) {
         >
           Próxima
         </button>
-      </div>
+      </nav>
     </section>
   )
 }

@@ -119,11 +119,11 @@
 .recharts-text { fill: var(--text); font-family: var(--font-numeric); }
 .recharts-default-tooltip { border: 1px solid var(--border-strong) !important; border-radius: 6px; background: var(--surface-2) !important; }
 .table-wrap { overflow-x: auto; }
-table { width: 100%; min-width: 760px; border-collapse: collapse; }
+table { width: 100%; min-width: 860px; border-collapse: collapse; }
 th, td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
 th { color: var(--text-muted); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; }
 td { color: var(--text); }
-td:nth-child(3), td:nth-child(5), td:nth-child(6) { color: var(--text-strong); font-family: var(--font-numeric); }
+td:nth-child(3), td:nth-child(5), td:nth-child(6), td:nth-child(7) { color: var(--text-strong); font-family: var(--font-numeric); }
 .pagination { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 16px; }
 .confusion-matrix { display: grid; grid-template-columns: repeat(4, minmax(70px, 1fr)); gap: 1px; margin-top: 16px; background: var(--border); }
 .confusion-matrix b, .confusion-matrix span { padding: 10px; background: var(--surface-2); color: var(--text-strong); text-align: center; }
@@ -164,3 +164,12 @@ td:nth-child(3), td:nth-child(5), td:nth-child(6) { color: var(--text-strong); f
   .preview-legend span, .probability-legend span { font-size: 10px; }
   .site-footer { align-items: flex-start; flex-direction: column; }
 }
+
+.field-hint { color: var(--text-muted); font-size: 12px; font-weight: 400; }
+.compact-table { min-width: 0; margin-top: 12px; font-size: 14px; }
+.compact-table th, .compact-table td { padding: 8px 6px; }
+.compact-table tbody th { color: var(--text-strong); font-size: 13px; letter-spacing: 0; text-transform: none; }
+.confusion-matrix { grid-template-columns: repeat(4, minmax(70px, 1fr)); }
+.confusion-row { display: contents; }
+code { padding: 1px 5px; border-radius: 4px; background: rgba(255, 255, 255, .07); font-size: .92em; }
+.form-hint { flex-basis: 100%; }

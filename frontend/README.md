@@ -1,50 +1,28 @@
-# Preditor do Brasileirão
+# Preditor do Brasileirão (front-end)
 
-Front-end em React, Vite e TypeScript para consultar previsões de partidas do Brasileirão Série A com base no dataset de 2020 a 2023.
+Interface em React 19, Vite e TypeScript que consome a API do projeto (`../src/api.py`). **Não há dados simulados:** se a API estiver fora do ar ou sem modelo, a interface mostra o erro devolvido.
 
 ## Como executar
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:5173 (a API deve estar em http://localhost:8000/api)
 ```
 
-Por padrão, o front-end procura a API em `http://localhost:8000/api`. Para alterar:
-
-```bash
-cp .env.example .env
-```
-
-Edite `VITE_API_URL` no arquivo `.env`.
+Para outra URL da API: `cp .env.example .env` e edite `VITE_API_URL`. A API precisa liberar a origem do front-end em `CORS_ORIGINS` (padrão: `http://localhost:5173` e `http://127.0.0.1:5173`).
 
 ## Scripts
 
-- `npm run dev`: inicia o servidor local do Vite.
-- `npm run build`: valida TypeScript e gera a versão de produção.
-- `npm run preview`: abre a build de produção localmente.
-- `npm run lint`: executa Oxlint.
+- `npm run dev`: servidor de desenvolvimento.
+- `npm run build`: verifica os tipos e gera `dist/`.
+- `npm run preview`: serve a build.
+- `npm run lint`: Oxlint.
+- `npm run typecheck`: `tsc -b`.
+- `npm test`: Vitest (28 testes de serviço, páginas e componentes; as respostas da API são simuladas apenas nos testes).
 
-## Endpoints esperados
+## Páginas
 
-- `GET /api/health`
-- `GET /api/teams`
-- `POST /api/predict`
-- `GET /api/stats/overview`
-- `GET /api/matches`
-
-Enquanto a API não estiver disponível, a interface usa dados simulados e sinaliza isso em tela. Esse fallback serve apenas para demonstração do front-end.
-
-## Telas implementadas
-
-- Início
-- Previsão
-- Estatísticas
-- Sobre o modelo
-
-## Observações
-
-- A lista de equipes é carregada pela API quando disponível.
-- O formulário impede mandante e visitante iguais.
-- A previsão exibe probabilidades, resultado mais provável, confiança, indicadores históricos e fatores relevantes.
-- A página de estatísticas possui filtros, indicadores, gráficos e tabela paginada.
-- A página Sobre reserva espaço para métricas reais e matriz de confusão após o treinamento final.
+- **Início:** indicadores da base e desempenho do modelo lidos de `/api/health` e `/api/model`.
+- **Previsão:** equipes de `/api/teams` (equipes sem histórico recente ficam desabilitadas), data de referência opcional, probabilidades, forma recente, confronto direto e fatores de `POST /api/predict`.
+- **Estatísticas:** filtros de temporada, equipe e mando; indicadores, gráficos e tabela paginada de `/api/stats/*` e `/api/matches`.
+- **Sobre o modelo:** algoritmo, versão, divisão temporal, métricas, matriz de confusão e limitações de `/api/model`.

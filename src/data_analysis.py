@@ -1506,7 +1506,7 @@ def _data_br(ts) -> str:
 def gerar_relatorio_markdown(ctx: dict) -> str:
     """Monta o relatório usando somente valores calculados nesta execução."""
     df, bruto, carga = ctx["df"], ctx["bruto"], ctx["carga"]
-    aux, equipes, rel = ctx["aux"], ctx["equipes"], ctx["relacoes"]
+    equipes, rel = ctx["equipes"], ctx["relacoes"]
     tp, pub, out = ctx["temporada"], ctx["publico_ausente"], ctx["outliers"]
     audit, ev, res = ctx["auditoria"], ctx["eventos"]["quantidade"], ctx["resumo_final"]
     g = ctx["gerais"].set_index("métrica")["valor"]

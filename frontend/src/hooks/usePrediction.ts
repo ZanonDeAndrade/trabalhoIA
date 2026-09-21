@@ -1,34 +1,44 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { predictMatch } from '../services/api'
-import type { PredictionResponse, Team } from '../types/api'
+import type { PredictionRequest, PredictionResponse } from '../types/api'
 import { getReadableError } from '../utils/format'
 
+type PredictionResult = { request: PredictionRequest; prediction: PredictionResponse }
+
 export function usePrediction() {
-  const [prediction, setPrediction] = useState<PredictionResponse | null>(null)
+  const [result, setResult] = useState<PredictionResult | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [source, setSource] = useState<'api' | 'mock'>('api')
+  const controllerRef = useRef<AbortController | null>(null)
+
+  useEffect(() => () => controllerRef.current?.abort(), [])
 
   const reset = useCallback(() => {
-    setPrediction(null)
+    controllerRef.current?.abort()
+    setResult(null)
     setError('')
+    setLoading(false)
   }, [])
 
-  async function submit(homeTeam: Team, awayTeam: Team, matchId?: string) {
+  const submit = useCallback(async (request: PredictionRequest) => {
+    controllerRef.current?.abort()
+    const controller = new AbortController()
+    controllerRef.current = controller
     setLoading(true)
     setError('')
 
     try {
-      const result = await predictMatch(homeTeam, awayTeam, matchId)
-      setPrediction(result.prediction)
-      setSource(result.source)
+      const prediction = await predictMatch(request, controller.signal)
+      if (controller.signal.aborted) return
+      setResult({ request, prediction })
     } catch (err) {
+      if (controller.signal.aborted) return
       setError(getReadableError(err))
-      setPrediction(null)
+      setResult(null)
     } finally {
-      setLoading(false)
+      if (!controller.signal.aborted) setLoading(false)
     }
-  }
+  }, [])
 
-  return { prediction, loading, error, source, submit, reset }
+  return { result, loading, error, submit, reset }
 }

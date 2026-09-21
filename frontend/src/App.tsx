@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import './App.css'
 import { Header } from './components/layout/Header'
-import { About } from './pages/About'
+import { LoadingState } from './components/feedback/LoadingState'
 import { Home } from './pages/Home'
-import { Prediction } from './pages/Prediction'
-import { Statistics } from './pages/Statistics'
+
+// Páginas com gráficos ou tabelas carregam sob demanda (reduz o pacote inicial).
+const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })))
+const Prediction = lazy(() => import('./pages/Prediction').then((m) => ({ default: m.Prediction })))
+const Statistics = lazy(() => import('./pages/Statistics').then((m) => ({ default: m.Statistics })))
 
 export type Page = 'home' | 'prediction' | 'statistics' | 'about'
 
@@ -24,10 +27,12 @@ function App() {
     <div className="app-shell">
       <Header currentPage={currentPage} onNavigate={navigate} />
       <main className={currentPage === 'home' ? 'page page-home' : 'page'} aria-label={pageTitles[currentPage]}>
-        {currentPage === 'home' && <Home onNavigate={navigate} />}
-        {currentPage === 'prediction' && <Prediction />}
-        {currentPage === 'statistics' && <Statistics />}
-        {currentPage === 'about' && <About />}
+        <Suspense fallback={<LoadingState message="Carregando página..." />}>
+          {currentPage === 'home' && <Home onNavigate={navigate} />}
+          {currentPage === 'prediction' && <Prediction />}
+          {currentPage === 'statistics' && <Statistics />}
+          {currentPage === 'about' && <About />}
+        </Suspense>
       </main>
       <footer className="site-footer">
         <strong>PLACAR</strong>

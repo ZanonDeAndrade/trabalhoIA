@@ -6,6 +6,7 @@ type TeamSelectProps = {
   value: string
   teams: Team[]
   disabledTeamId?: string
+  unavailableIds?: ReadonlySet<string>
   error?: string
   onChange: (teamId: string) => void
 }
@@ -16,6 +17,7 @@ export function TeamSelect({
   value,
   teams,
   disabledTeamId,
+  unavailableIds,
   error,
   onChange,
 }: TeamSelectProps) {
@@ -29,12 +31,21 @@ export function TeamSelect({
         aria-describedby={error ? `${id}-error` : undefined}
         onChange={(event) => onChange(event.target.value)}
       >
-        <option value="">Buscar ou selecionar equipe</option>
-        {teams.map((team) => (
-          <option key={team.id} value={team.id} disabled={team.id === disabledTeamId}>
-            {team.name}
-          </option>
-        ))}
+        <option value="">Selecionar equipe</option>
+        {teams.map((team) => {
+          const unavailable = unavailableIds?.has(team.id) ?? false
+          return (
+            <option
+              key={team.id}
+              value={team.id}
+              disabled={team.id === disabledTeamId || unavailable}
+              title={unavailable ? (team.reason ?? undefined) : undefined}
+            >
+              {team.name}
+              {unavailable ? ' — sem histórico recente' : ''}
+            </option>
+          )
+        })}
       </select>
       {error && (
         <small id={`${id}-error`} className="field-error">
