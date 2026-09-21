@@ -1,0 +1,2 @@
+# Preserva o PDF sem conversao de finais de linha ou diff textual.
+*.pdf binary
