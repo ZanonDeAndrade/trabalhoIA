@@ -9,10 +9,7 @@ import { Statistics } from './pages/Statistics'
 export type Page = 'home' | 'prediction' | 'statistics' | 'about'
 
 const pageTitles: Record<Page, string> = {
-  home: 'Início',
-  prediction: 'Previsão',
-  statistics: 'Estatísticas',
-  about: 'Sobre o modelo',
+  home: 'Início', prediction: 'Previsão', statistics: 'Estatísticas', about: 'Sobre o modelo',
 }
 
 function App() {
@@ -26,12 +23,16 @@ function App() {
   return (
     <div className="app-shell">
       <Header currentPage={currentPage} onNavigate={navigate} />
-      <main className="page" aria-label={pageTitles[currentPage]}>
+      <main className={currentPage === 'home' ? 'page page-home' : 'page'} aria-label={pageTitles[currentPage]}>
         {currentPage === 'home' && <Home onNavigate={navigate} />}
         {currentPage === 'prediction' && <Prediction />}
         {currentPage === 'statistics' && <Statistics />}
         {currentPage === 'about' && <About />}
       </main>
+      <footer className="site-footer">
+        <strong>PLACAR</strong>
+        <span>Trabalho 1 · Inteligência Artificial II · dataset partidas_20_23.csv</span>
+      </footer>
     </div>
   )
 }

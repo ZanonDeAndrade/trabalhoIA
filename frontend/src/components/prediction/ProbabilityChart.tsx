@@ -1,32 +1,20 @@
 import type { PredictionResponse, Team } from '../../types/api'
 import { formatPercent } from '../../utils/format'
 
-type ProbabilityChartProps = {
-  prediction: PredictionResponse
-  homeTeam: Team
-  awayTeam: Team
-}
+type ProbabilityChartProps = { prediction: PredictionResponse; homeTeam: Team; awayTeam: Team }
 
 export function ProbabilityChart({ prediction, homeTeam, awayTeam }: ProbabilityChartProps) {
   const rows = [
-    { label: `Vitória do ${homeTeam.name}`, value: prediction.probabilities.home_win },
-    { label: 'Empate', value: prediction.probabilities.draw },
-    { label: `Vitória do ${awayTeam.name}`, value: prediction.probabilities.away_win },
+    { label: homeTeam.name, short: 'Mandante', value: prediction.probabilities.home_win, tone: 'home' },
+    { label: 'Empate', short: 'Empate', value: prediction.probabilities.draw, tone: 'draw' },
+    { label: awayTeam.name, short: 'Visitante', value: prediction.probabilities.away_win, tone: 'away' },
   ]
-
   return (
-    <div className="probability-list" aria-label="Probabilidades da previsão">
-      {rows.map((row) => (
-        <div className="probability-row" key={row.label}>
-          <div>
-            <span>{row.label}</span>
-            <strong>{formatPercent(row.value)}</strong>
-          </div>
-          <div className="progress-track" aria-hidden="true">
-            <span style={{ width: `${Math.round(row.value * 100)}%` }} />
-          </div>
-        </div>
-      ))}
-    </div>
+    <figure className="probability-list" aria-label="Probabilidades da previsão">
+      <div className="probability-track" aria-hidden="true">{rows.map((row) => <span key={row.tone} className={row.tone} style={{ width: `${row.value * 100}%` }} />)}</div>
+      <div className="probability-legend">
+        {rows.map((row) => <div key={row.tone}><span><i className={row.tone} />{row.short}</span><strong>{formatPercent(row.value)}</strong><small>{row.label}</small></div>)}
+      </div>
+    </figure>
   )
 }
