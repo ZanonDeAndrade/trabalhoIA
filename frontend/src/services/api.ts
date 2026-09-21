@@ -1,7 +1,7 @@
 import {
   createMockPrediction,
   getMockMatches,
-  mockOverview,
+  getMockOverview,
   mockTeams,
 } from './mockData'
 import type {
@@ -63,6 +63,20 @@ function validatePrediction(value: unknown): PredictionResponse {
   throw new Error('Resposta da previsão em formato inválido.')
 }
 
+export async function checkApiHealth(): Promise<{ online: boolean; details?: unknown }> {
+  try {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 2000)
+    const res = await fetch(`${API_URL}/health`, { signal: controller.signal })
+    clearTimeout(timeoutId)
+    if (!res.ok) return { online: false }
+    const details = await res.json()
+    return { online: true, details }
+  } catch {
+    return { online: false }
+  }
+}
+
 export async function getTeams(): Promise<{ teams: Team[]; source: 'api' | 'mock' }> {
   try {
     const data = await request<unknown>('/teams')
@@ -75,6 +89,7 @@ export async function getTeams(): Promise<{ teams: Team[]; source: 'api' | 'mock
 export async function predictMatch(
   homeTeam: Team,
   awayTeam: Team,
+  matchId?: string,
 ): Promise<{ prediction: PredictionResponse; source: 'api' | 'mock' }> {
   if (homeTeam.id === awayTeam.id) {
     throw new Error('Selecione equipes diferentes para mandante e visitante.')
@@ -86,6 +101,7 @@ export async function predictMatch(
       body: JSON.stringify({
         home_team: homeTeam.id,
         away_team: awayTeam.id,
+        match_id: matchId,
       }),
     })
 
@@ -96,7 +112,7 @@ export async function predictMatch(
     }
 
     return {
-      prediction: createMockPrediction(homeTeam, awayTeam),
+      prediction: createMockPrediction(homeTeam, awayTeam, matchId),
       source: 'mock',
     }
   }
@@ -115,7 +131,7 @@ export async function getOverview(
     const overview = await request<OverviewStats>(`/stats/overview?${params.toString()}`)
     return { overview, source: 'api' }
   } catch {
-    return { overview: mockOverview, source: 'mock' }
+    return { overview: getMockOverview(filters), source: 'mock' }
   }
 }
 
