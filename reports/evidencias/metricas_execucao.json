@@ -1,0 +1,510 @@
+{
+  "executado_em": "2026-09-21T09:32:55-03:00",
+  "python": "3.14.3",
+  "numpy": "2.5.3",
+  "pandas": "3.0.6",
+  "sklearn": "1.9.1",
+  "sha256_csv_original": "edc5071c053b97a752e55ef56df91f075995dee998ef4fb520a98c7bd223bf62",
+  "particoes": {
+    "treino": 689,
+    "validacao": 363,
+    "teste": 362,
+    "treino_final": 1052
+  },
+  "ausencias_mando": {
+    "treino": 16,
+    "validacao": 4,
+    "teste": 4
+  },
+  "medianas_apenas_treino_final": true,
+  "modelo_selecionado": "Regressão Logística",
+  "treino": [
+    {
+      "nome_modelo": "Baseline (Majoritária)",
+      "particao": "Treino (2020–2021)",
+      "acuracia": 0.45573294629898403,
+      "acuracia_balanceada": 0.3333333333333333,
+      "f1_macro": 0.2087072116982386,
+      "f1_weighted": 0.2853442575032522,
+      "f1_home_win": 0.6261216350947159,
+      "f1_draw": 0.0,
+      "f1_away_win": 0.0,
+      "log_loss_val": 19.61737303471543,
+      "brier_score": 1.0885341074020318,
+      "matriz_confusao": [
+        [
+          314,
+          0,
+          0
+        ],
+        [
+          199,
+          0,
+          0
+        ],
+        [
+          176,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "nome_modelo": "Regressão Logística",
+      "particao": "Treino (2020–2021)",
+      "acuracia": 0.5631349782293179,
+      "acuracia_balanceada": 0.5106876667646281,
+      "f1_macro": 0.5124988411440227,
+      "f1_weighted": 0.5404474181462515,
+      "f1_home_win": 0.6728723404255319,
+      "f1_draw": 0.3875,
+      "f1_away_win": 0.477124183006536,
+      "log_loss_val": 0.9289585050159721,
+      "brier_score": 0.5532587406518018,
+      "matriz_confusao": [
+        [
+          253,
+          33,
+          28
+        ],
+        [
+          108,
+          62,
+          29
+        ],
+        [
+          77,
+          26,
+          73
+        ]
+      ]
+    },
+    {
+      "nome_modelo": "Random Forest",
+      "particao": "Treino (2020–2021)",
+      "acuracia": 0.5849056603773585,
+      "acuracia_balanceada": 0.5024265435457542,
+      "f1_macro": 0.5028112174403154,
+      "f1_weighted": 0.5342949237827045,
+      "f1_home_win": 0.6833144154370034,
+      "f1_draw": 0.36293436293436293,
+      "f1_away_win": 0.46218487394957986,
+      "log_loss_val": 0.9152450728209488,
+      "brier_score": 0.5419710567807103,
+      "matriz_confusao": [
+        [
+          301,
+          10,
+          3
+        ],
+        [
+          148,
+          47,
+          4
+        ],
+        [
+          118,
+          3,
+          55
+        ]
+      ]
+    },
+    {
+      "nome_modelo": "HistGradientBoosting",
+      "particao": "Treino (2020–2021)",
+      "acuracia": 0.9100145137880987,
+      "acuracia_balanceada": 0.8971150143692794,
+      "f1_macro": 0.9088157033528542,
+      "f1_weighted": 0.9094009545734146,
+      "f1_home_win": 0.9175412293853074,
+      "f1_draw": 0.8739946380697051,
+      "f1_away_win": 0.9349112426035503,
+      "log_loss_val": 0.5388680469141087,
+      "brier_score": 0.2847681730467385,
+      "matriz_confusao": [
+        [
+          306,
+          6,
+          2
+        ],
+        [
+          34,
+          163,
+          2
+        ],
+        [
+          13,
+          5,
+          158
+        ]
+      ]
+    }
+  ],
+  "validacao": [
+    {
+      "nome_modelo": "Baseline (Majoritária)",
+      "particao": "Validação (2022)",
+      "acuracia": 0.44352617079889806,
+      "acuracia_balanceada": 0.3333333333333333,
+      "f1_macro": 0.20483460559796438,
+      "f1_weighted": 0.272548524803903,
+      "f1_home_win": 0.6145038167938931,
+      "f1_draw": 0.0,
+      "f1_away_win": 0.0,
+      "log_loss_val": 20.057349819839295,
+      "brier_score": 1.1129476584022038,
+      "matriz_confusao": [
+        [
+          161,
+          0,
+          0
+        ],
+        [
+          102,
+          0,
+          0
+        ],
+        [
+          100,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "nome_modelo": "Regressão Logística",
+      "particao": "Validação (2022)",
+      "acuracia": 0.41597796143250687,
+      "acuracia_balanceada": 0.3742077700645476,
+      "f1_macro": 0.3695678940190921,
+      "f1_weighted": 0.3974418946384304,
+      "f1_home_win": 0.5386666666666666,
+      "f1_draw": 0.2711864406779661,
+      "f1_away_win": 0.2988505747126437,
+      "log_loss_val": 1.121840914817199,
+      "brier_score": 0.6735840223031817,
+      "matriz_confusao": [
+        [
+          101,
+          31,
+          29
+        ],
+        [
+          59,
+          24,
+          19
+        ],
+        [
+          54,
+          20,
+          26
+        ]
+      ]
+    },
+    {
+      "nome_modelo": "Random Forest",
+      "particao": "Validação (2022)",
+      "acuracia": 0.43526170798898073,
+      "acuracia_balanceada": 0.33922867697803755,
+      "f1_macro": 0.25689604307261127,
+      "f1_weighted": 0.31596724657099395,
+      "f1_home_win": 0.6128364389233955,
+      "f1_draw": 0.12213740458015267,
+      "f1_away_win": 0.03571428571428571,
+      "log_loss_val": 1.0594202981743004,
+      "brier_score": 0.6385014213713927,
+      "matriz_confusao": [
+        [
+          148,
+          8,
+          5
+        ],
+        [
+          89,
+          8,
+          5
+        ],
+        [
+          85,
+          13,
+          2
+        ]
+      ]
+    },
+    {
+      "nome_modelo": "HistGradientBoosting",
+      "particao": "Validação (2022)",
+      "acuracia": 0.371900826446281,
+      "acuracia_balanceada": 0.3322408963585434,
+      "f1_macro": 0.3263537969311223,
+      "f1_weighted": 0.3542170795899077,
+      "f1_home_win": 0.4946236559139785,
+      "f1_draw": 0.2513089005235602,
+      "f1_away_win": 0.2331288343558282,
+      "log_loss_val": 1.1722791405035944,
+      "brier_score": 0.7000340739928692,
+      "matriz_confusao": [
+        [
+          92,
+          40,
+          29
+        ],
+        [
+          63,
+          24,
+          15
+        ],
+        [
+          56,
+          25,
+          19
+        ]
+      ]
+    }
+  ],
+  "treino_final": {
+    "nome_modelo": "Regressão Logística",
+    "particao": "Treino final (2020–2022)",
+    "acuracia": 0.5342205323193916,
+    "acuracia_balanceada": 0.48382260842534386,
+    "f1_macro": 0.4852518078087144,
+    "f1_weighted": 0.5128670399135624,
+    "f1_home_win": 0.6466960352422908,
+    "f1_draw": 0.36220472440944884,
+    "f1_away_win": 0.44685466377440347,
+    "log_loss_val": 0.9590143171970963,
+    "brier_score": 0.5737272529562104,
+    "matriz_confusao": [
+      [
+        367,
+        67,
+        41
+      ],
+      [
+        168,
+        92,
+        41
+      ],
+      [
+        125,
+        48,
+        103
+      ]
+    ]
+  },
+  "teste": {
+    "nome_modelo": "Regressão Logística",
+    "particao": "Teste (2023)",
+    "acuracia": 0.4447513812154696,
+    "acuracia_balanceada": 0.3725992524669442,
+    "f1_macro": 0.35971964997893213,
+    "f1_weighted": 0.40789456587923134,
+    "f1_home_win": 0.5942028985507246,
+    "f1_draw": 0.22058823529411764,
+    "f1_away_win": 0.26436781609195403,
+    "log_loss_val": 1.088512075223528,
+    "brier_score": 0.6516486435621329,
+    "matriz_confusao": [
+      [
+        123,
+        16,
+        31
+      ],
+      [
+        57,
+        15,
+        22
+      ],
+      [
+        64,
+        11,
+        23
+      ]
+    ]
+  },
+  "baselines_teste": {
+    "majoritaria": {
+      "nome_modelo": "majoritaria",
+      "particao": "Teste (2023)",
+      "acuracia": 0.4696132596685083,
+      "acuracia_balanceada": 0.3333333333333333,
+      "f1_macro": 0.2130325814536341,
+      "f1_weighted": 0.3001287749761143,
+      "f1_home_win": 0.6390977443609023,
+      "f1_draw": 0.0,
+      "f1_away_win": 0.0,
+      "log_loss_val": 19.11707583069197,
+      "brier_score": 1.0607734806629834,
+      "matriz_confusao": [
+        [
+          170,
+          0,
+          0
+        ],
+        [
+          94,
+          0,
+          0
+        ],
+        [
+          98,
+          0,
+          0
+        ]
+      ]
+    },
+    "frequencias": {
+      "nome_modelo": "frequencias",
+      "particao": "Teste (2023)",
+      "acuracia": 0.4696132596685083,
+      "acuracia_balanceada": 0.3333333333333333,
+      "f1_macro": 0.2130325814536341,
+      "f1_weighted": 0.3001287749761143,
+      "f1_home_win": 0.6390977443609023,
+      "f1_draw": 0.0,
+      "f1_away_win": 0.0,
+      "log_loss_val": 1.0605722429867048,
+      "brier_score": 0.639844297204964,
+      "matriz_confusao": [
+        [
+          170,
+          0,
+          0
+        ],
+        [
+          94,
+          0,
+          0
+        ],
+        [
+          98,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "coeficientes_top15": {
+    "cat__home_team_Chapecoense AF": 0.7244660218116302,
+    "cat__home_team_CR Flamengo": 0.41501430411681745,
+    "cat__home_team_Clube Atlético Mineiro": 0.4110161082010568,
+    "cat__away_team_Coritiba FBC": 0.391300861584271,
+    "cat__away_team_CR Flamengo": 0.3881879502427781,
+    "cat__away_team_SE Palmeiras": 0.3712350547605774,
+    "cat__home_team_Botafogo FR": 0.3607106241654625,
+    "cat__away_team_EC Juventude": 0.3508778713135207,
+    "cat__away_team_Chapecoense AF": 0.34342498730933685,
+    "cat__dia_semana_segunda-feira": 0.30445755699973515,
+    "cat__away_team_Avai FC": 0.30122123434608,
+    "cat__away_team_Fortaleza EC": 0.2935528522429948,
+    "cat__away_team_Clube Atlético Mineiro": 0.28753253757638225,
+    "cat__away_team_Ceará SC": 0.28648624049714183,
+    "cat__home_team_SC Internacional": 0.2853007485823718
+  },
+  "exemplos": [
+    {
+      "id_partida": 1141,
+      "data": "2023-04-15 16:00:00",
+      "mandante": "SE Palmeiras",
+      "visitante": "Cuiabá EC",
+      "p_mandante": 0.5455708912575413,
+      "p_empate": 0.3260917813282703,
+      "p_visitante": 0.12833732741418838,
+      "previsto": "Mandante",
+      "real": "Mandante",
+      "placar": "2 × 1",
+      "acertou": true
+    },
+    {
+      "id_partida": 1142,
+      "data": "2023-04-15 16:00:00",
+      "mandante": "América FC (Minas Gerais)",
+      "visitante": "Fluminense FC",
+      "p_mandante": 0.39662577280067485,
+      "p_empate": 0.3184782693249231,
+      "p_visitante": 0.28489595787440214,
+      "previsto": "Mandante",
+      "real": "Visitante",
+      "placar": "0 × 3",
+      "acertou": false
+    },
+    {
+      "id_partida": 1143,
+      "data": "2023-04-15 18:30:00",
+      "mandante": "Botafogo FR",
+      "visitante": "São Paulo FC",
+      "p_mandante": 0.1300383562932779,
+      "p_empate": 0.42179115840090514,
+      "p_visitante": 0.448170485305817,
+      "previsto": "Visitante",
+      "real": "Mandante",
+      "placar": "2 × 1",
+      "acertou": false
+    },
+    {
+      "id_partida": 1145,
+      "data": "2023-04-15 18:30:00",
+      "mandante": "Club Athletico Paranaense",
+      "visitante": "Goiás EC",
+      "p_mandante": 0.5650434105587476,
+      "p_empate": 0.2324171284029823,
+      "p_visitante": 0.20253946103827009,
+      "previsto": "Mandante",
+      "real": "Mandante",
+      "placar": "2 × 0",
+      "acertou": true
+    },
+    {
+      "id_partida": 1146,
+      "data": "2023-04-15 18:30:00",
+      "mandante": "Fortaleza EC",
+      "visitante": "SC Internacional",
+      "p_mandante": 0.3441622933562796,
+      "p_empate": 0.481036325554652,
+      "p_visitante": 0.17480138108906837,
+      "previsto": "Empate",
+      "real": "Empate",
+      "placar": "1 × 1",
+      "acertou": true
+    },
+    {
+      "id_partida": 1148,
+      "data": "2023-04-16 16:00:00",
+      "mandante": "CR Flamengo",
+      "visitante": "Coritiba FBC",
+      "p_mandante": 0.8352999464682804,
+      "p_empate": 0.0664755320776589,
+      "p_visitante": 0.09822452145406055,
+      "previsto": "Mandante",
+      "real": "Mandante",
+      "placar": "3 × 0",
+      "acertou": true
+    },
+    {
+      "id_partida": 1151,
+      "data": "2023-04-22 16:00:00",
+      "mandante": "Fluminense FC",
+      "visitante": "Club Athletico Paranaense",
+      "p_mandante": 0.6616458029369123,
+      "p_empate": 0.15928341347638728,
+      "p_visitante": 0.17907078358670045,
+      "previsto": "Mandante",
+      "real": "Mandante",
+      "placar": "2 × 0",
+      "acertou": true
+    },
+    {
+      "id_partida": 1153,
+      "data": "2023-04-22 18:30:00",
+      "mandante": "Cuiabá EC",
+      "visitante": "Red Bull Bragantino",
+      "p_mandante": 0.38795101314411756,
+      "p_empate": 0.40706423871929853,
+      "p_visitante": 0.20498474813658382,
+      "previsto": "Empate",
+      "real": "Empate",
+      "placar": "1 × 1",
+      "acertou": true
+    }
+  ]
+}

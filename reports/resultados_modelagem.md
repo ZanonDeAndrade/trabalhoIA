@@ -26,7 +26,7 @@ Os modelos foram ajustados estritamente com as temporadas 2020 e 2021 (689 parti
 
 ![Comparação dos Modelos na Validação](figures/14_comparacao_modelos_validacao.png)
 
-**Decisão:** O modelo selecionado para o teste final foi o **Regressão Logística**, pois obteve o melhor equilíbrio de generalização e maior Macro F1-Score.
+**Decisão:** O modelo selecionado para o teste final foi o **Regressão Logística**, pois obteve o maior Macro F1-Score na validação; a escolha não implica superioridade em todas as métricas.
 
 ---
 
@@ -62,6 +62,6 @@ O modelo vencedor (Regressão Logística) foi retreinado com todo o histórico d
 ![Importância das Features](figures/16_importancia_features.png)
 
 ### Principais Conclusões:
-1. **Diferenciais de Rendimento:** Variáveis calculadas como a diferença de saldo de gols e média de pontos dos últimos 5 jogos entre mandante e visitante despontaram como as mais influentes para orientar as probabilidades dos modelos.
-2. **Dificuldade Intrínseca do Empate:** O empate é notoriamente a classe mais difícil de ser discriminada no futebol moderno, pois reflete um equilíbrio dinâmico e contingências durante a partida, sendo raramente previsto com alta probabilidade a priori.
-3. **Validade e Integridade Temporal:** O pipeline executou 100% livre de vazamento de dados (*data leakage*), produzindo métricas realistas e reprodutíveis com a semente fixa `RANDOM_STATE = 42`.
+1. **Coeficientes:** Os 15 maiores valores da média absoluta dos coeficientes correspondem a categorias de equipes e dia da semana. O gráfico não sustenta a predominância dos diferenciais de pontos ou saldo de gols e não demonstra causalidade.
+2. **Dificuldade do Empate no Experimento:** O modelo acertou 15 dos 94 empates no teste (recall de 16,0%). O resultado limita sua capacidade de reconhecer essa classe.
+3. **Integridade Temporal e Limites:** As partições cronológicas e os históricos deslocados evitam usar a própria partida nas entradas. O teste é sequencial por jogo e pode usar partidas anteriores de 2023. As verificações não constituem garantia universal contra vazamento. Consulte relatorio_tecnico.pdf para comparação com frequências históricas e limitações.
