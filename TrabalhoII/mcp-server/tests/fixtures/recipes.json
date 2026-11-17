@@ -1,0 +1,75 @@
+{
+  "_aviso": "DADOS SINTÉTICOS DE TESTE. Não são receitas do corpus real nem do Wikilivros.",
+  "recipes": [
+    {
+      "recipe_id": "fx-001-v1",
+      "document_id": "fx-001",
+      "variant_index": 1,
+      "title": "[FIXTURE] Omelete de queijo",
+      "topic_key": "ovos",
+      "topic_label": "Ovos",
+      "ingredients": [
+        {"name_original": "ovos", "name_normalized": "ovo", "quantity_text": "2 unidades", "required": true},
+        {"name_original": "queijo", "name_normalized": "queijo", "quantity_text": "1 fatia", "required": true},
+        {"name_original": "sal", "name_normalized": "sal", "quantity_text": "a gosto", "required": false}
+      ],
+      "instructions": ["Passo de teste 1.", "Passo de teste 2."],
+      "source_url": "https://example.org/fixture/omelete",
+      "license": "fixture",
+      "retrieved_at": "2026-11-16T00:00:00Z"
+    },
+    {
+      "recipe_id": "fx-002-v1",
+      "document_id": "fx-002",
+      "variant_index": 1,
+      "title": "[FIXTURE] Panqueca simples",
+      "topic_key": "massas",
+      "ingredients": [
+        {"name_original": "farinha de trigo", "name_normalized": "farinha de trigo", "quantity_text": "1 xícara", "required": true},
+        {"name_original": "leite", "name_normalized": "leite", "quantity_text": "1 xícara", "required": true, "alternatives_documented": ["água"]},
+        {"name_original": "ovo", "name_normalized": "ovo", "quantity_text": "1 unidade", "required": true}
+      ],
+      "instructions": ["Misture (teste).", "Frite (teste)."],
+      "source_url": "https://example.org/fixture/panqueca",
+      "license": "fixture",
+      "portions": 4
+    },
+    {
+      "recipe_id": "fx-003-v1",
+      "document_id": "fx-003",
+      "variant_index": 1,
+      "title": "[FIXTURE] Brigadeiro versão 1",
+      "topic_key": "sobremesas",
+      "topic_label": "Sobremesas",
+      "ingredients": [
+        {"name_original": "leite condensado", "name_normalized": "leite condensado", "required": true},
+        {"name_original": "chocolate em pó", "name_normalized": "chocolate em po", "required": true},
+        {"name_original": "manteiga", "name_normalized": "manteiga", "required": true}
+      ],
+      "instructions": ["Cozinhe mexendo (teste)."],
+      "source_url": "https://example.org/fixture/brigadeiro"
+    },
+    {
+      "recipe_id": "fx-003-v2",
+      "document_id": "fx-003",
+      "variant_index": 2,
+      "title": "[FIXTURE] Brigadeiro versão 2",
+      "topic_key": "sobremesas",
+      "ingredients": [
+        {"name_original": "leite condensado", "name_normalized": "leite condensado", "required": true},
+        {"name_original": "cacau", "name_normalized": "cacau", "required": true}
+      ],
+      "instructions": ["Variante de teste."],
+      "source_url": "https://example.org/fixture/brigadeiro"
+    },
+    {
+      "recipe_id": "INVALIDO com espaço",
+      "document_id": "fx-999",
+      "title": "[FIXTURE] Registro inválido que deve ser rejeitado",
+      "topic_key": "ovos",
+      "ingredients": [],
+      "instructions": [],
+      "source_url": "nao-e-url"
+    }
+  ]
+}
